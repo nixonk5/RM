@@ -1,3 +1,5 @@
+print('RUNNING IN PRODUCTION')
+
 from .base import *
 import os, dj_database_url
 

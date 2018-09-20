@@ -1,6 +1,6 @@
 
 
 try:
-    from .local_settings import *
+	from .local_settings import *
 except ImportError:
-    from .produccion_settings import *
+	from .produccion_settings import *

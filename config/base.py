@@ -14,13 +14,7 @@ import os, environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2^(4x%5k^gy!y)p&qmrntd8w*m)@y15r!!7tzy^(x_i8_xlt!n'
+print(BASE_DIR)
 
 env = environ.Env()
 
@@ -46,16 +40,6 @@ LOCAL_APPS = [
 
 INSTALLED_APPS = DJANGO_APPS+THIRD_PARTY_APPS+LOCAL_APPS
 
-# Application definition
-
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,8 +56,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -84,6 +68,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
@@ -137,8 +122,15 @@ USE_TZ = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL          = '/static/'
-STATIC_ROOT         = os.path.join(BASE_DIR, "modulos/inicio/static")
+STATIC_ROOT         = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS    = (
+    os.path.join(BASE_DIR,'static'),
+)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+
+MEDIA_URL       = '/media/'
+MEDIA_ROOT      = os.path.join(BASE_DIR, 'media')
