@@ -1,0 +1,10 @@
+body{
+	padding: 1rem;
+}
+
+.img-portada{
+	background-image: url('/media/portada.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 10rem;
+}

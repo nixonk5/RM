@@ -5,4 +5,7 @@ from django.views.generic import (
 
 class PortadaTemplateView(TemplateView):
 	template_name = "portada.html"
+
+class CursosTemplateView(TemplateView):
+	template_name = "cursos/inicio.html"
 		
